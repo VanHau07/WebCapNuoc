@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/admin/layout-main}">
+
+<body>
+	<div layout:fragment="content">
+		<div class="row page-titles">
+			<div class="col-md-12 col-12 align-self-center p-l-0">
+				<h3 class="text-themecolor m-b-0 m-t-0 text-uppercase">Danh
+					sách thông tin về danh mục nhân sự</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<form id="fPerson" name="fPerson" method="post"
+					enctype="multipart/form-data">
+					<div class="card">
+						<div class="card-body">
+							<div class="form-group row m-b-6">
+								<div class="col-12 col-md-6 col-lg-6">
+									<div class="custom-field">
+										<input
+											class="form-control form-control-sm custom-field__textbox"
+											type="text" id="name" name="name" autocomplete="off">
+										<label class=" col-form-label custom-field__textbox--label">Tên nhân sự
+											</label>
+									</div>
+								</div>
+								<div class="col-12 col-md-4 col-lg-4">
+									<div class="row">
+										<div class="col-12 custom-field m-b-16">
+											<div class="c-f__wrapper">
+												<select class=" form-control form-control-sm c-f__textbox"
+													id="vt-ns" name="vt-ns" tabindex="-1"
+													aria-hidden="true">
+													<option value=""></option>
+													<th:block th:if="${map_dmPersonnel != null}">
+														<option th:each="entry : ${map_dmPersonnel.entrySet()}"
+															th:value="${entry.key}" th:utext="${entry.value}">
+														</option>
+													</th:block>
+												</select>
+												<fieldset aria-hidden="true" class="c-f__set">
+													<legend class="c-f__legend">
+														
+														<label class=" col-form-label custom-field__textbox--label">Vị trí nhân sự
+											</label>
+													</legend>
+												</fieldset>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="col-12 col-md-2 col-lg-2 config-email__search">
+									<div class="row">
+										<div
+											class=" col-8 offset-4 col-md-12 offset-md-0 col-lg-12 offset-lg-0 ">
+											<button class="btns btns-search_auto__ses hover-up__ses"
+												data-action="search" title="Tìm kiếm" type="button">
+												<i class="mdi mdi-file-find "></i> <span
+													class="d-none d-md-inline">Tìm kiếm</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12">
+									<hr style="margin: 0 0 10px 0;">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="button-group text-right">
+										<button type="button" title="Thêm mới" data-action="create"
+											data-controller="personCreate"
+											class="btns btns-add__ses hover-up__ses">
+											<i class="mdi mdi mdi-plus-circle-outline"> </i> <span
+												class="d-none d-md-inline">Thêm mới</span>
+										</button>
+										<button type="button" title="Chi tiết" data-action="detail"
+											data-controller="personDetail"
+											class="btns btns-detail__ses hover-up__ses"
+											disabled="disabled">
+											<i class="mdi mdi-information-outline"> </i> <span
+												class="d-none d-md-inline">Chi tiết</span>
+										</button>
+										<button type="button" title="Thay đổi" data-action="edit"
+											data-controller="personEdit"
+											class="btns btns-edit__ses hover-up__ses" disabled="disabled">
+											<i class="mdi mdi-tooltip-edit"> </i> <span
+												class="d-none d-md-inline">Thay đổi</span>
+										</button>
+
+										<button type="button" title="Kích hoạt" data-action="active"
+											data-controller="personActive"
+											class="btns btns-export__ses hover-up__ses"
+											disabled="disabled">
+											<i class="mdi mdi-account-check-outline"> </i> <span
+												class="d-none d-md-inline">Kích hoạt</span>
+										</button>
+										<button type="button" title="Hủy kích hoạt"
+											data-action="de-active" data-controller="personDeActive"
+											class="btns btns-export__ses-2 hover-up__ses"
+											disabled="disabled">
+											<i class="mdi mdi-account-remove"> </i> <span
+												class="d-none d-md-inline">Hủy kích hoạt</span>
+										</button>
+
+										<button type="button" title="Set/Hủy tin nổi bật"
+											data-action="hotnews" data-controller="personHotnews"
+											class="btns btns-detail__ses hover-up__ses"
+											disabled="disabled">
+											<i class="mdi mdi-alert-circle-check-outline"> </i> <span
+												class="d-none d-md-inline">Set/Hủy tin nổi bật</span>
+										</button> 
+
+										<button type="button" title="Xóa" data-action="delete"
+											data-controller="personDelete"
+											class="btns btns-delete__ses hover-up__ses"
+											disabled="disabled">
+											<i class="mdi mdi-close-box"> </i> <span
+												class="d-none d-md-inline">Xóa</span>
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row m-b-5 m-t-7">
+								<div class="col-12 has-min-height-grid">
+									<div id="grid"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<script type="text/javascript">
+					var _gridMain = $('#fPerson').find('#grid');
+				</script>
+				<script th:src="@{/static/function/personnel/person.js(v=1.3) }"></script>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

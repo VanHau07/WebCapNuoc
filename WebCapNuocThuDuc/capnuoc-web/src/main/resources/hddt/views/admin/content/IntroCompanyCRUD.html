@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+	
+<div class="row page-titles">
+	<div class="col-md-12 col-12 align-self-center p-l-0">
+		<h3 class="text-themecolor m-b-0 m-t-0 text-uppercase" th:text="${_header_}" ></h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<form id="fIntroCRUD" name="fIntroCRUD" method="post" enctype="multipart/form-data" >
+			<div class="card">
+				<div class="card-body">
+					<div class="row text-danger m-b-10 fw-500" th:if="${messageError != null}">
+						[[${messageError}]]
+						<div class="col-12 p-0"><hr class="m-t-5 m-b-5"></div>
+					</div>
+					<div class="form-group row m-b-6" th:classappend="${messageError != null? 'none-pointer-event': ''}">
+						<div class="col-12">
+							<div class="row">
+								<div class="col-6">
+									<label class="col-form-label">Tiêu đề<span class="text-danger" th:if="${_isedit_}">*</span></label>
+									<input class="form-control form-control-sm" type="text" id="title" name="title" th:value="${Title}" autocomplete="off" >
+								</div>
+								
+								<div class="col-md-6 m-b-5">
+							<th:block th:if="${_action_ == 'CREATE'}">
+									<label class="col-form-label">Ảnh mô tả <span class="text-danger" th:if="${_isedit_}">*</span></label>
+									<div class="row m-b-5">
+										<div class="col-8 p-r-0">
+											<div class="input-group">
+												<input type="text" class="form-control form-control-sm" name="attachFileName"  maxlength="50" readonly="readonly" >
+												<div class="input-group-append">
+													<button type="button" data-action="refresh-attach-file" class="btn btn-sm btn-warning p-t-1 p-b-1" ><i class="mdi mdi-refresh"> </i></button>
+												</div>
+											</div>
+											<div class="dis-none">
+												<input type="text" class="form-control form-control-sm" name="attachFileNameSystem"  maxlength="50" readonly="readonly" >
+											</div>
+										</div>
+										<div class="col-4 p-l-0">
+											<div class="form-file m-t-xs">
+									 			<input type="file" name="attachFile" accept="image/*">
+									 			<button class="btn btn-sm btn-block btn-success fw-700">Chọn file ảnh...</button>
+								 			</div>
+								 		</div>													
+								 	</div>
+							</th:block>
+							<th:block th:if="${'DETAIL' == _action_ }">									
+								<div class="row m-b-5" style="margin-top: -15px;">	
+									<div class="col-md-4" style="text-align: center; margin-top: 45px">
+										<label class="col-form-label">Ảnh mô tả <span class="text-danger" th:if="${_isedit_}">*</span></label>						  									
+									</div>		
+									<div class="col-md-8">
+										<img th:src="@{'/e-images/' + ${ImageLogo}}" width="120px" height="100px" alt=""/>
+									</div>																																																						
+								</div>
+							</th:block>		
+								<th:block th:if="${_action_ == 'EDIT'}">
+									<label class="col-form-label">Ảnh mô tả <span class="text-danger" th:if="${_isedit_}">*</span></label>
+									<div class="row m-b-5">
+										<div class="col-3 p-r-0">
+												<img th:src="@{'/e-images/' + ${ImageLogo}}" width="80px" height="50px" alt=""/>
+										</div>
+										<div class="col-5 p-r-0">
+											<div class="input-group">
+												<input type="text" class="form-control form-control-sm" name="attachFileName" th:value="${ImageLogoOriginalFilename}" maxlength="50" readonly="readonly" >
+												<div class="input-group-append">
+													<button type="button" data-action="refresh-attach-file" class="btn btn-sm btn-warning p-t-1 p-b-1" ><i class="mdi mdi-refresh"> </i></button>
+												</div>
+											</div>
+											<div class="dis-none">
+												<input type="text" class="form-control form-control-sm" name="attachFileNameSystem" th:value="${ImageLogo}" maxlength="50" readonly="readonly" >
+											</div>
+										</div>
+										<div class="col-4 p-l-0">
+											<div class="form-file m-t-xs">
+									 			<input type="file" name="attachFile" accept="image/*">
+									 			<button class="btn btn-sm btn-block btn-success fw-700">Chọn file ảnh...</button>
+								 			</div>
+								 		</div>													
+								 	</div>
+							</th:block>			
+								</div>
+							</div>
+						</div>
+										
+				
+						<div class="col-12 m-b-5">
+							<div class="row">
+								<div class="col-12">
+									<label class="col-form-label">Nội dung<span class="text-danger" th:if="${_isedit_}">*</span></label>
+									<textarea id="content" name="content" rows="10" class="form-control">[[${Content}]]</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row"><div class="col-12"><hr style="margin: 0 0 10px 0;"></div></div>					
+					<div class="form-group row m-b-6">
+						<div class="col-6">
+							<button type="button" data-action="back" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-chevron-left"></i> Quay lại</button>
+						</div>
+						<div class="col-6 text-right">
+							<button type="button" data-action="accept" class="btn btn-sm btn-primary btn-ses"
+								th:if="${null == messageError && 'DETAIL' != _action_}" ><i class="mdi mdi-check-all"></i> Chấp nhận</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" name="_id" th:value="${_id}" >
+		</form>
+		<script type="text/javascript">
+		transactionMain = '[[${transaction}]]';
+		</script>
+		
+		<th:block th:switch="${_isedit_}" >
+			<script type="text/javascript" th:case="true">
+			$(function(){
+				initTinyMCEForMail('content');
+			});
+			</script>
+			<script type="text/javascript" th:case="*">
+			$(function(){
+				disabledAllControlsInForm('fIntroCRUD');
+				initTinyMCEOnlyView('content');
+				setTimeout(function(){
+					$('div[role="application"]').find('div[role="group"]').removeClass('tox-tbtn--disabled').removeAttr('aria-disabled');
+					$('div[role="application"]').find('div[role="group"]').find('button').removeClass('tox-tbtn--disabled').removeAttr('aria-disabled');
+				}, 500);
+			});
+			</script>
+		</th:block>
+		<script th:src="@{/static/function/introduce/IntroCRUD.js(v=1.8) }"></script>
+	</div>
+</div>
+
+</html>

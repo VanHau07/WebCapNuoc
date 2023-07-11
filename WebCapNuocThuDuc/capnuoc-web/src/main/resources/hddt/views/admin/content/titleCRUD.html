@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+	
+<div class="row page-titles">
+	<div class="col-md-12 col-12 align-self-center p-l-0">
+		<h3 class="text-themecolor m-b-0 m-t-0 text-uppercase" th:text="${_header_}" ></h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<form id="fTitleCRUD" name="fTitleCRUD" method="post" enctype="multipart/form-data" >
+			<div class="card">
+				<div class="card-body">
+					<div class="row text-danger m-b-10 fw-500" th:if="${messageError != null}">
+						[[${messageError}]]
+						<div class="col-12 p-0"><hr class="m-t-5 m-b-5"></div>
+					</div>
+					<div class="form-group row m-b-6" th:classappend="${messageError != null? 'none-pointer-event': ''}">
+							<div class="col-12 m-b-5">
+							<div class="row">
+								<div class="col-12">
+									<label class="col-form-label">Tiêu đề trang người dùng <span class="text-danger" th:if="${_isedit_}">*</span></label>
+									<input class="form-control form-control-sm" type="text" id="title_user" name="title_user" th:value="${Title_user}" autocomplete="off" >
+								</div>
+							</div>
+						</div>									
+							<div class="col-12 m-b-5">
+							<div class="row">
+								<div class="col-12">
+									<label class="col-form-label">Tiêu đề trang quản trị <span class="text-danger" th:if="${_isedit_}">*</span></label>
+									<input class="form-control form-control-sm" type="text" id="title_admin" name="title_admin" th:value="${Title_admin}" autocomplete="off" >
+								</div>
+							</div>
+						</div>											
+					</div>
+					
+					<div class="row"><div class="col-12"><hr style="margin: 0 0 10px 0;"></div></div>					
+					<div class="form-group row m-b-6">
+						<div class="col-6">
+							<button type="button" data-action="back" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-chevron-left"></i> Quay lại</button>
+						</div>
+						<div class="col-6 text-right">
+							<button type="button" data-action="accept" class="btn btn-sm btn-primary btn-ses"
+								th:if="${null == messageError && 'DETAIL' != _action_}" ><i class="mdi mdi-check-all"></i> Chấp nhận</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" name="_id" th:value="${_id}" >
+		</form>
+		<script type="text/javascript">
+		transactionMain = '[[${transaction}]]';
+		</script>
+		<th:block th:switch="${_isedit_}" >
+			<script type="text/javascript" th:case="true">
+			$(function(){
+				initTinyMCEForMail('hotline');
+			});
+			</script>
+			<script type="text/javascript" th:case="*">
+			$(function(){
+				disabledAllControlsInForm('fTitleCRUD');
+				initTinyMCEOnlyView('hotline');
+				setTimeout(function(){
+					$('div[role="application"]').find('div[role="group"]').removeClass('tox-tbtn--disabled').removeAttr('aria-disabled');
+					$('div[role="application"]').find('div[role="group"]').find('button').removeClass('tox-tbtn--disabled').removeAttr('aria-disabled');
+				}, 500);
+			});
+			</script>
+		</th:block>
+		<script th:src="@{/static/function/title/titleCRUD.js(v=1.2) }"></script>
+	</div>
+</div>
+
+</html>

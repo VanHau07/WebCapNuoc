@@ -1,0 +1,74 @@
+   <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/client/layout-index}">
+<body>
+	<th:block layout:fragment="content">
+	
+	  
+    <section class="hero-area">
+      <div class="">
+        <div class="row">
+          <div class="col-12 custom-padding-right">
+            <div class="slider-head">
+              <div class="hero-slider">
+                <div class="single-slider" th:each="slide: ${_slide}">
+                <img alt="#" th:src="@{'/e-images/' + ${slide.ImageLogo}}">
+                </div>                        
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trending-product section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title">
+              <h2>Sách mới</h2>
+            <!--   <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-12" th:each="list_: ${_ebook}">
+            <div class="single-product">
+              <div class="product-image">
+                <a th:href="@{'/sach/' + ${list_._id}}"               
+                      data-gallery="portfolioGallery"
+                      class="portfolio-lightbox"
+                      
+                    >
+                      <img
+                         th:src="@{'/e-images/' + ${list_.ImageLogo}}"
+                        class="img-fluid"
+                        alt=""
+                      />
+                    </a>
+              </div>
+              <div class="product-info">
+                <span class="category">[[${list_.LoaiSachText}]]</span>
+                <h4 class="title">
+                <a th:href="@{'/sach/' + ${list_._id}}"
+                    >[[${list_.Title}]]
+                  </a>
+                </h4>
+
+   <!--              <div class="price">
+                  <span>[[${list_.Price}]]đ</span>
+                </div> -->
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+
+  
+   </th:block>
+</body>
+</html>

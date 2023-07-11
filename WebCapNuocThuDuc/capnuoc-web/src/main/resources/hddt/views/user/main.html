@@ -1,0 +1,215 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/layout-main}">
+<body>
+	<th:block layout:fragment="content">
+			  <div class="container-fluid style-main-content" id="divMainContent">
+          <div class="container__dashboard">
+            <div class="row page-titles m-t-32 m-b-32">
+              <div class="col-md-12 col-12 align-self-center p-l-0">
+                <h2 class="font-bold m-b-0 m-t-0 text-uppercase text-center">
+                  TÌNH HÌNH SỬ DỤNG HÓA ĐƠN
+                </h2>
+     
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div>
+                 
+                  <div  th:if="${MSKH1 != null}">  <h2><center> <strong class="col-12" th:text="${MSKH1}">
+                     </strong></center></h2>
+                      <div class="row m-t-16">
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__green">
+                          <h5>Số lượng</h5>
+                          <p  th:text="${SL1}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__brown">
+                          <h5>ĐÃ SỬ DỤNG</h5>
+                          <p th:text="${DD1}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__red">
+                          <h5>Còn lại</h5>
+                          <p th:text="${CL1}"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                     </div>
+                     
+                       <div  th:if="${MSKH2 != null}"> <h2><center> <strong class="col-12" th:text="${MSKH2}">
+                     </strong></center></h2>
+                      <div class="row m-t-16">
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__green">
+                          <h5>Số lượng</h5>
+                          <p  th:text="${SL2}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__brown">
+                          <h5>ĐÃ SỬ DỤNG</h5>
+                          <p th:text="${DD2}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__red">
+                          <h5>Còn lại</h5>
+                          <p th:text="${CL2}"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                     </div>
+                     
+                     <div  th:if="${MSKH3 != null}">  <h2> <center> <strong class="col-12" th:text="${MSKH3}">
+                     </strong></center></h2>
+                      <div class="row m-t-16">
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__green">
+                          <h5>Số lượng</h5>
+                          <p  th:text="${SL3}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__brown">
+                          <h5>ĐÃ SỬ DỤNG</h5>
+                          <p th:text="${DD3}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__red">
+                          <h5>Còn lại</h5>
+                          <p th:text="${CL3}"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                     </div>
+                     
+                      <div  th:if="${MSKH4 != null}">  <h2> <center><strong class="col-12" th:text="${MSKH4}">
+                     </strong></center></h2>
+                      <div class="row m-t-16">
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__green">
+                          <h5>Số lượng</h5>
+                          <p  th:text="${SL4}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__brown">
+                          <h5>ĐÃ SỬ DỤNG</h5>
+                          <p th:text="${DD4}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__red">
+                          <h5>Còn lại</h5>
+                          <p th:text="${CL4}"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                     </div>
+                     
+                 
+                     
+                     <div  th:if="${MSKH5 != null}"> <h2><center>   <strong class="col-12" th:text="${MSKH5}">
+                     </strong></center></h2>
+                      <div class="row m-t-16">
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__green">
+                          <h5>Số lượng</h5>
+                          <p  th:text="${SL5}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__brown">
+                          <h5>ĐÃ SỬ DỤNG</h5>
+                          <p th:text="${DD5}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__red">
+                          <h5>Còn lại</h5>
+                          <p th:text="${CL5}"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                     </div>
+                     
+                     <div  th:if="${MSKH6 != null}"> <h2> <center> <strong class="col-12" th:text="${MSKH6}">
+                     </strong></center></h2>
+                      <div class="row m-t-16">
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__green">
+                          <h5>Số lượng</h5>
+                          <p  th:text="${SL6}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__brown">
+                          <h5>ĐÃ SỬ DỤNG</h5>
+                          <p th:text="${DD6}"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                      <div class="s-invoice__item">
+                        <div class="s-invoice__body s-invoice__red">
+                          <h5>Còn lại</h5>
+                          <p th:text="${CL6}"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                     </div>
+                 
+                 
+                  
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+	
+	</th:block>
+</body>
+</html>

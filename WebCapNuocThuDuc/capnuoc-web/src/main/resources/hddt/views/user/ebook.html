@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/client/layout-main}">
+<body>
+	<th:block layout:fragment="content">
+		  
+
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <ul class="breadcrumb-nav">
+              <li>
+                <a href="/"><i class="lni lni-home"></i> Trang chủ</a>
+              </li>
+              <li>Sách</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <section class="section book-wrap blog-section blog-list">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-12">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-12" th:each="sach: ${_ebook}">
+                <div class="single-blog">
+                  <div class="blog-img">
+                    <a th:href="@{'/sach/' + ${sach._id}}" >
+                      <img
+                       th:src="@{'/e-images/' + ${sach.ImageLogo}}"
+                        alt="#"
+                      />
+                    </a>
+                  </div>
+                  <div class="blog-content">
+                    <h4>
+                      <a class="limit-row" th:href="@{'/sach/' + ${sach._id}}" 
+                        >[[${sach.Title}]]
+                      </a>
+                    </h4>
+                    <div class="blog-content__wrap">
+                      <p class="limit-row">
+                        [[${sach.SummaryContent}]]
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+
+	</th:block>
+
+</body>

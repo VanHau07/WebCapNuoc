@@ -1,0 +1,17 @@
+@media (max-width: 992px) {
+  .footer .footer-links h4,
+  .footer .footer-links ul {
+    padding-left: 0;
+  }
+}
+@media (max-width: 548px) {
+  .contact-info {
+    flex-direction: column;
+  }
+  #topbar .contact-info .contact-info__item {
+    padding: 8px 0;
+  }
+  #topbar .contact-info .contact-info__item .phone-icon {
+    margin-left: 0;
+  }
+}

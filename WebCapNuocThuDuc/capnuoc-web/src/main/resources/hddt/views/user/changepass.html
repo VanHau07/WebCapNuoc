@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>HĐĐT - Thay đổi mật khẩu</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="https://hoadon78.sesgroup.vn/hddt/favicon.ico" />
+
+
+
+<link th:href="@{/static/css/all-styles.css(v=1.0)}" rel="stylesheet">
+
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script th:src="@{/static/assets/plugins/jquery/jquery.min.js}"></script>
+<link
+	th:href="@{/static/assets/plugins/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+
+<script th:src="@{/static/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+
+<!-- Bootstrap Core CSS -->
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/bootstrap.min.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/fontawesome-all.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/simple-line-icons.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/weather-icons.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/static/HĐĐT - Cấu hình email server_files/linea.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/themify-icons.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/flag-icon.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/materialdesignicons.min.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/spinners.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/animate.css}"
+	rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link th:href="@{/static/HĐĐT - Cấu hình email server_files/style.css}"
+	rel="stylesheet" />
+
+<!-- You can change the theme colors from here -->
+<link th:href="@{/static/HĐĐT - Cấu hình email server_files/blue.css}"
+	id="theme" rel="stylesheet" />
+<!-- 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css}"> -->
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/materialdesignicons.min(1).css}"
+	id="theme" rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/themify-icons.css}"
+	id="theme" rel="stylesheet" />
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/alertify.min.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/kendo.common.min.css}"
+	rel="stylesheet" />
+<!-- 		<link th:href="@{/static/KendoUI/css/kendo.default.min.css}" rel="stylesheet"> -->
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/kendo.rtl.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/kendo.mobile.all.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/static/HĐĐT - Cấu hình email server_files/all.css}"
+	rel="stylesheet" />
+
+<!-- WYSIWYG -->
+<!-- quill -->
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/quill.snow.css}"
+	rel="stylesheet" />
+<!-- end quill -->
+
+<!-- Import Trumbowyg -->
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/trumbowyg.min.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/trumbowyg.table.min.css}"
+	rel="stylesheet" />
+<!-- END Import Trumbowyg -->
+
+<!-- virtual-select -->
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/virtual-select.min.css}"
+	rel="stylesheet" />
+<!-- end - virtual-select -->
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/select2.min.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/jquery.datetimepicker.min.css}"
+	rel="stylesheet" />
+
+<link rel="stylesheet"
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/zTreeStyle.css}"
+	type="text/css" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/sumoselect.min.css}"
+	rel="stylesheet" />
+
+<!-- using notification -->
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/jquery.toast.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/style.custom.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/style-util.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/style-admin.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/css-mobile.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/style-admin-custom.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/style-fullscreen-modals.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/jquery-ui.min.css}"
+	rel="stylesheet" />
+
+<link th:href="@{/static/HĐĐT - Cấu hình email server_files/main.css}"
+	rel="stylesheet" />
+
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/tribute.css}"
+	rel="stylesheet" />
+<link
+	th:href="@{/static/HĐĐT - Cấu hình email server_files/all-styles.css}"
+	rel="stylesheet" />
+
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+
+
+<!-- You can change the theme colors from here -->
+<link th:href="@{/static/css/colors/blue.css(v=1.0)}" id="theme"
+	rel="stylesheet">
+<!-- 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css"> -->
+<link
+	th:href="@{/static/css/icons/material-design-5.9.55/css/materialdesignicons.min.css}"
+	id="theme" rel="stylesheet">
+<link th:href="@{/static/css/icons/themify-icons/themify-icons.css}"
+	id="theme" rel="stylesheet">
+<style type="text/css">
+.tb {
+	color: red
+}
+
+.jqstooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	background: rgb(0, 0, 0) transparent;
+	background-color: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000);
+	-ms-filter:
+		'progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)';
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+	white-space: nowrap;
+	padding: 5px;
+	border: 1px solid white;
+	z-index: 10000;
+}
+
+.jqsfield {
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+}
+</style>
+</head>
+<body class="fix-header card-no-border logo-center"
+	cz-shortcut-listen="true">
+	<!-- ============================================================== -->
+	<!-- Preloader - style you can find in spinners.css -->
+	<!-- ============================================================== -->
+	<div class="preloader" style="display: none">
+		<svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none"
+				stroke-width="2" stroke-miterlimit="10"></circle>
+      </svg>
+	</div>
+	<!-- ============================================================== -->
+	<!-- Main wrapper - style you can find in pages.scss -->
+	<!-- ============================================================== -->
+	<div id="main-wrapper">
+		<!-- ============================================================== -->
+		<!-- Topbar header - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<header class="topbar">
+			<!-- th:style = "'background: rgb(40 167 69);'" -->
+			<nav class="navbar top-navbar navbar-expand-md navbar-light">
+				<!-- ============================================================== -->
+				<!-- toggle and nav items -->
+				<!-- ============================================================== -->
+				<ul class="navbar-nav mt-md-0 navbar-nav__menu">
+					<!-- This is  -->
+					<li class="nav-item"><a
+						class="nav-link nav-toggler text-muted waves-effect waves-dark"
+						href="javascript:void(0)"> <i
+							class="mdi mdi-chevron-double-right"></i></a></li>
+					<!-- ============================================================== -->
+				</ul>
+				<!-- ============================================================== -->
+				<!-- Logo -->
+				<!-- ============================================================== -->
+				<div class="navbar-header" style="width: auto; position: unset">
+					<a class="navbar-brand"
+						href="https://hoadon78.sesgroup.vn/hddt/main"> <!-- Logo text -->
+						<div>
+							<!-- Light Logo text -->
+							<img src="/static/HĐĐT - Cấu hình email server_files/ses.jpg"
+								class="light-logo" alt="homepage" />
+						</div>
+
+					</a>
+				</div>
+				<div class="support support-nav">
+					<div>
+						<span class="support-label">Hỗ trợ:</span> <span
+							class="support-data">088 95 95 333</span><span
+							class="support-label"> | </span><span class="support-label">Email:</span>
+						<span class="support-data">support@sesgroup.vn</span>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Logo -->
+				<!-- ============================================================== -->
+				<div class="navbar-collapse justify-content-end navbar-right">
+					<!-- ============================================================== -->
+					<!-- ============================================================== -->
+					<!-- User profile and search -->
+					<!-- ============================================================== -->
+					<ul class="navbar-nav my-lg-0">
+						<!-- ============================================================== -->
+						<!-- Profile -->
+						<!-- ============================================================== -->
+						<li class="nav-item dropdown"><a
+							class="dropdown-toggle text-muted text-center d-flex align-items-center user-profile__show"
+							href="" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false" style="line-height: 20px !important;">
+								<img th:src="@{/static/images/user-icon-03.jpg}" alt="user"
+								class="profile-pic mr-2">
+						</a>
+							<div class="dropdown-menu dropdown-menu-right scale-up">
+								<ul class="dropdown-user">
+									<li><a th:href="@{/hddt/main/changeprofile/change}"
+										class="pT-3 pB-5"><i class="ti-user"></i> Thay đổi thông
+											tin người dùng</a></li>
+									<li><a th:href="@{/hddt/main/viewprofile/view}"
+										class="pT-3 pB-5"><i class="ti-user"></i> Xem thông tin
+											người dùng</a></li>
+									<li><a th:href="@{/hddt/main/changepass}" class="pT-5 pB-5"><i
+											class="ti-unlock"></i> Thay đổi mật khẩu</a></li>
+									<li role="separator" class="divider m-0"></li>
+									<li><a th:href="@{/hddt/logout}" class="pT-5 pB-5"><i
+											class="mdi mdi-logout"></i> Logout</a></li>
+								</ul>
+							</div></li>
+						<!-- ============================================================== -->
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- ============================================================== -->
+		<!-- End Topbar header -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Left Sidebar - style you can find in sidebar.scss  -->
+
+
+		<div class="left-sidebar">
+			<div class="scroll-sidebar">
+				<div class="sidebar-nav">
+					<ul id="sidebarnav">
+						<span><i class="mdi mdi-chevron-double-left"></i></span>
+						<div class="sidebar-nav__logo active">
+							<a href="https://hoadon78.sesgroup.vn/hddt/main"
+								class="sidebar-nav__logo--link active"> <img
+								src="/static/HĐĐT - Quản lý_files/logottp.png"
+								class="light-logo" alt="homepage" />
+							</a>
+						</div>
+						<li class="nav-small-cap">INVOICE 78</li>
+						<li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-file-check-outline"></i><span class="hide-menu">Đăng ký hóa đơn 78</span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a href="../main/tkhai/init">Danh sách tờ khai 01 - Thông tư 78</a></li>
+								<li><a href="../main/mauhd/init">Mẫu hóa đơn</a></li>
+								<li><a href="../main/quantitys/init">Phát hành số lượng</a></li>
+							</ul>
+						</li>
+						<li class="nav-small-cap">MANAGER PRODUCT</li>
+						<li><a class="has-arrow" href="../main/dmproduct/init"
+							aria-expanded="false"><i class="mdi mdi-cog-box" ></i><span
+								class="hide-menu">Quản lý sản phẩm </span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a href="../main/dmproduct/init">Danh sách sản phẩm</a></li>
+							</ul></li>
+						<li class="nav-small-cap">MANAGER CUSTOMER</li>
+						<li><a class="has-arrow" href="../main/dmcustomer/init"
+							aria-expanded="false"><i class="mdi mdi-account" ></i><span
+								class="hide-menu">Quản lý khách hàng </span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a href="../main/dmcustomer/init">Danh sách khách
+										hàng</a></li>
+							</ul></li>
+						<li class="nav-small-cap">INVOICE</li>
+						<li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-newspaper" ></i><span class="hide-menu">Phát
+									hành hóa đơn </span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a href="../main/einvoices/init">Danh sách hóa đơn GTGT </a></li>
+								<li><a href="../main/einvoices1/init">Danh sách hóa đơn bán hàng</a></li>
+								<li><a href="../main/agent/init">PXK hàng gửi bán đại lý</a></li>
+									<li><a href="../main/export/init">PXK hàng gửi bán đại lý</a></li>
+							</ul></li>
+						<li class="nav-small-cap">INVOICE HANDLE</li>
+						<li><a class="has-arrow" href="../main/tbhdssot/init"
+							aria-expanded="false"><i class="mdi mdi-checkbox-marked-outline" ></i><span
+								class="hide-menu">Xử lý hóa đơn</span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a href="../main/tbhdssot/init">Thông báo HĐ sai sót</a></li>
+							</ul></li>
+						<li class="nav-small-cap">BC</li>
+						<li><a class="has-arrow"
+							href="https://hoadon78.sesgroup.vn/hddt/main#"
+							aria-expanded="false"><i class="mdi mdi-chart-bar-stacked" ></i><span
+								class="hide-menu">Báo cáo </span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a class="" href="../main/tkdshdon/init" aria-expanded="false">Thống kê DSHD GTGT</a></li>
+								<li><a class="" href="../main/tkdshdonBH/init" aria-expanded="false">Thống kê DSHD Bán Hàng</a></li>
+								<li><a class="" href="../main/tkdshdonPXK/init" aria-expanded="false">Thống kê DSHD PXK VC NỘI BỘ</a></li>
+								<li><a class="" href="../main/tkdshdonPXKDL/init" aria-expanded="false">Thống kê DSHD PXK ĐẠI LÝ</a></li>
+							</ul></li>
+
+						<li class="nav-small-cap">SYSTEM</li>
+						<li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-home" ></i><span class="hide-menu">Hệ thống </span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a href="../main/config-email-server/init">Cấu hình email server</a></li>
+										<li><a href="../main/tra-cuu-mail-user/init">Tra cứu Email đã gửi</a></li>
+							</ul></li>
+						<li class="nav-small-cap">HT</li>
+						<li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-plus" ></i><span class="hide-menu">Hỗ
+									trợ</span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a class="" href="../main/introduce/init" aria-expanded="false">Hướng
+										dẫn sử dụng</a></li>
+								<li><a class="" href="../main/support/init" aria-expanded="false">Phần mềm
+										hỗ trợ</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Page wrapper  -->
+		<!-- ============================================================== -->
+		<div class="page-wrapper" style="min-height: 501px">
+			<!-- ============================================================== -->
+			<!-- Container fluid  -->
+			<!-- ============================================================== -->
+			<div class="container-fluid hide style-main-content"
+				id="divSubContent02"></div>
+			<div class="container-fluid hide style-main-content"
+				id="divSubContent"></div>
+			<div class="container-fluid style-main-content" id="divMainContent">
+				<div class="row page-titles">
+					<div class="col-md-12 col-12 align-self-center p-l-0">
+						<h3 class="text-themecolor m-b-0 m-t-0 text-uppercase">Thay
+							đổi mật khẩu</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<form th:action="@{/main/changepass}" method="post"
+							th:object="${users}">
+
+							<div class="card">
+								<div class="card-body">
+									<div class="row m-t-32 d-flex flex-column align-items-center">
+										<p th:if="${message!=null}">
+											<span class="tb" th:text="${message}"></span>
+										</p>
+										<div
+											class="col-12 col-sm-12 col-md-8 col-lg-4 custom-field m-b-24">
+											<div class="c-f__wrapper">
+												<input th:path="${userName}" th:value="${userName}"
+													class="form-control form-control-sm c-f__textbox"
+													type="text" autocomplete="off" th:readonly="true" />
+												<fieldset aria-hidden="true" class="c-f__set">
+													<legend class="c-f__legend">
+														<label>UserName</label>
+													</legend>
+												</fieldset>
+											</div>
+										</div>
+										<div
+											class="col-12 col-sm-12 col-md-8 col-lg-4 custom-field m-b-24">
+											<div class="c-f__wrapper">
+												<input class="form-control form-control-sm c-f__textbox"
+													type="password" id="pw" name="pw" required="required"
+													pattern=".{6,}" title="Mật khẩu phải từ 6 ký tự trở lên"
+													autocomplete="off" /> <span toggle="#pw"
+													class="show-hide__password">show</span>
+												<fieldset aria-hidden="true" class="c-f__set">
+													<legend class="c-f__legend">
+														<label>Mật khẩu cũ</label>
+													</legend>
+												</fieldset>
+											</div>
+										</div>
+										<div
+											class="col-12 col-sm-12 col-md-8 col-lg-4 custom-field m-b-24">
+											<div class="c-f__wrapper">
+												<input class="form-control form-control-sm c-f__textbox"
+													required="required" pattern=".{6,}"
+													title="Mật khẩu phải từ 6 ký tự trở lên" type="password"
+													id="pw1" name="pw1" value="" autocomplete="off" /> <span
+													toggle="#pw1" class="show-hide__password">show</span>
+												<fieldset aria-hidden="true" class="c-f__set">
+													<legend class="c-f__legend">
+														<label>Mật khẩu mới</label>
+													</legend>
+												</fieldset>
+											</div>
+										</div>
+										<div
+											class="col-12 col-sm-12 col-md-8 col-lg-4 custom-field m-b-24">
+											<div class="c-f__wrapper">
+												<input class="form-control form-control-sm c-f__textbox"
+													required="required" pattern=".{6,}"
+													title="Mật khẩu phải từ 6 ký tự trở lên" type="password"
+													id="pw2" name="pw2" value="" autocomplete="off" /> <span
+													toggle="#pw2" class="show-hide__password">show</span>
+												<fieldset aria-hidden="true" class="c-f__set">
+													<legend class="c-f__legend">
+														<label>Nhập lại mật khẩu mới</label>
+													</legend>
+												</fieldset>
+											</div>
+										</div>
+										<div
+											class="col-12 col-sm-12 col-md-8 col-lg-4 custom-field m-b-24 form-group captcha">
+											<div class="d-flex no-block align-items-center">
+												<div class="p-t-0 col-6 p-l-0 p-r-0">
+													<img class="pos-a centerY" alt="" id="idImageCap"
+														style="width: 190px"
+														th:src="*{'data:realCaptcha/jpg;base64,'+ realCaptcha}" />
+												</div>
+
+												<div class="p-l-5 col-6 p-l-0 p-r-0">
+													<div class="c-f__wrapper">
+														<input type="hidden" th:field="*{hiddenCaptcha}" /> <input
+															type="text" th:field="*{captcha}" required="required"
+															class="form-control text-center fw-700 c-f__textbox"
+															autocomplete="off" />
+														<fieldset aria-hidden="true" class="c-f__set">
+															<legend class="c-f__legend">
+																<label>Nhập mã kiểm tra</label>
+															</legend>
+														</fieldset>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-sm-12 col-md-8 col-lg-4 m-b-24">
+											<div class="text-md-left text-sm-left text-left"></div>
+											<div class="text-md-right text-sm-right text-right">
+												<button type="submit" data-action="accept"
+													class="btnadd btns btns-blue__ses" title="Chấp nhận">
+													<i class="mdi mdi-check-all"></i> <span class="d-md-inline">Chấp
+														nhận</span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <input type="hidden" name="id" value="6219acbf021ce9aa6be165f4" /> -->
+						</form>
+						<script type="text/javascript">
+							$(function() {
+								var clicked = 0
+
+								$('.show-hide__password').click(function(e) {
+									e.preventDefault()
+									if (clicked == 0) {
+										$(this).html('hide')
+										clicked = 1
+									} else {
+										$(this).html('show')
+										clicked = 0
+									}
+
+									var input = $($(this).attr('toggle'))
+									if (input.attr('type') == 'password') {
+										input.attr('type', 'text')
+									} else {
+										input.attr('type', 'password')
+									}
+								})
+							})
+						</script>
+
+
+
+
+					</div>
+				</div>
+
+				<div id="modelPopup" class="modal modal-fullscreen-xl" tabindex="-1"
+					role="dialog" data-backdrop="static" aria-hidden="true"
+					data-keyboard="false"
+					style="display: none; padding-left: 8px; padding-right: 0px">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content"></div>
+					</div>
+				</div>
+
+				<div id="modelPopupMedium" class="modal modal-fullscreen-sm"
+					tabindex="-1" role="dialog" data-backdrop="static"
+					aria-hidden="true" data-keyboard="false" style="display: none">
+					<div class="modal-dialog custom-dialog__ses" role="document">
+						<div class="modal-content"></div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer">© HĐĐT</footer>
+			<!-- ============================================================== -->
+			<!-- End footer -->
+			<div class="overlay-wrap"></div>
+			<!-- ============================================================== -->
+			<!-- End Page wrapper  -->
+			<!-- ============================================================== -->
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+</body>
+</html>

@@ -1,0 +1,182 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/admin/layout-reset}">
+<body>
+	<th:block layout:fragment="content">
+		<section id="wrapper"
+			style="position: absolute !important; -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%;">
+			<!--         <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);"> -->
+			<div class="login-register"
+				style="background-color:#f0f0f0; position: unset">
+				<div class="login-box card" style="height: 465px">
+					<div class="card-body">
+						<form class="form-horizontal form-material authform" 
+							name="fResetPassword" id="fResetPassword" method="post"
+							enctype="application/x-www-form-urlencoded">
+							<input type="hidden" name="_csrf"
+								value="c679a3ce-af1b-4865-85fa-81ca092edced" />
+							<h3 class="box-title m-b-10 text-uppercase font-bold">QUÊN
+								MẬT KHẨU?</h3>
+							<hr class="m-t-sm m-b-sm" />
+					<div class="form-group ">
+				<div class="col-xs-12">
+					<input name="j_username" class="form-control" type="text" required placeholder="Tên đăng nhập" autocomplete="given-name" > 
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<input name="j_email" class="form-control" type="text" required placeholder="Email" autocomplete="new-password" >
+				</div>
+			</div>
+                    <div class="form-group captcha"  >
+				<div class="d-flex no-block align-items-center" >
+					<div class="p-t-0 col-6 p-l-0 p-r-0">
+						<img class="pos-a centerY" alt="" id="idImageCap" style="width: auto;" >
+					</div>
+					<div class="p-l-5 col-6 p-l-0 p-r-0">
+						<input type="text" class="form-control text-center fw-700" id="j_captcha" name="j_captcha" required placeholder="Mã kiểm tra" maxlength="10" readonly="readonly" autocomplete="off" > 
+					</div>
+				</div>
+			</div>
+							<div class="form-group text-center m-t-20">
+								<div class="col-xs-12">
+									 <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light login p-t-4 p-b-4" type="submit">Đăng nhập</button>
+								</div>
+							</div>
+							<div class="p-v-lg text-center">
+								Trở về trang <a th:href="@{/admin}"
+									class="text-primary _600">Đăng nhập</a>
+							</div>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form>
+
+						<script type="text/javascript">
+							transactionMain = '[[${transaction}]]';
+						</script>
+					
+						  <script>
+			    ROOT_PATH = '[[${#httpServletRequest.getContextPath()}]]';
+				_csrf_value = '[[${_csrf.token}]]';_csrf_name = '[[${_csrf.parameterName}]]';
+				clearTimeout(timer);
+			    </script>
+                <script>
+                $(document).ready(function(event) {
+                	refreshCaptcha($('.authform').find('#idImageCap'));
+                	setTimeout(function(){
+        				$('.authform').find('input[name="j_username"], input[name="j_passwor"], input[name="j_captcha"]').prop('readonly', false);
+       				}, 1000);
+                	
+                	$('.authform').find('#idImageCap, #btChangeCaptcha').click(function(event) {
+    					event.preventDefault();/* event.stopPropagation(); */
+    					refreshCaptcha($('.authform').find('#idImageCap'));
+	    			});
+                	
+                	$('.authform').find("button.login").click(function (event) {
+                		event.preventDefault();/* event.stopPropagation(); */
+        				var dataLogin = $(".authform").serializeObject();
+        				
+        				var _obj = this;
+        				$(_obj).prop('disabled', true);
+        				var $form = $('form.authform');
+        				var _action = $form.attr('action');
+        				$.ajax({
+        					type: "POST",
+        					datatype: "json",
+        					url:  ROOT_PATH+ '/forgotpass/checkDataToSend',
+        					data: dataLogin,
+        					beforeSend: function(req) {
+        						initAjaxJsonRequest(req);
+        			        	showLoading();
+        					},
+        					success:function(res, textStatus, xhr) {   
+        						$(_obj).prop('disabled', false);
+        						hideLoading();
+        						if(res) {
+        							if(res.errorCode == 0) {
+        								$
+										.ajax({
+											type : "POST",
+											datatype : "json",
+
+											url : ROOT_PATH
+													+ '/forgotpass/getToken',
+											data : dataLogin,
+											beforeSend : function(
+													a) {
+												initAjaxJsonRequest(a);
+												showLoading();
+											},
+											success : function(
+													res) {
+												hideLoading();
+												if (res) {
+													if (res.errorCode == 0) {
+														
+														var objJson = {};
+														objJson[_csrf_name] = _csrf_value;
+														objJson['tokenConfirm'] = null == res.responseData ? ''
+																: res.responseData;
+														showPopupWithURLAndData(
+																ROOT_PATH
+																		+ '/forgotpass/confirmPassword',
+																objJson,
+																'MD');
+														//
+													} else {
+														alertDLSuccess(createObjectError(
+																res)
+																.html());
+														refreshCaptcha($('.authform').find('#idImageCap'));
+													}
+												} else {
+													alertDLSuccess('unknown error!!!');
+													hideLoading();
+													refreshCaptcha($('.authform').find('#idImageCap'));
+												}
+											},
+											error : function(
+													xhr,
+													ajaxOptions,
+													thrownError) {
+												alertDLSuccess(
+														xhr.status
+																+ " - "
+																+ xhr.responseText,
+														function() {
+														});
+												hideLoading();
+												refreshCaptcha($('.authform').find('#idImageCap'));
+											}
+										});
+        							}else{
+        								alertDLSuccess(createObjectError(res).html(), function(){});
+        							}
+        						}else{
+        							alertDLSuccess('unknown error!!!', function(){});
+        							hideLoading();
+        						}
+        						
+        						
+        					},
+        					error:function (xhr, ajaxOptions, thrownError){
+        						refreshCaptcha($('.authform').find('#idImageCap'));
+        						$('.authform').find('input[name="j_captcha"]').val('');
+        						$(_obj).prop('disabled', false);
+        						alertDLSuccess(xhr.status + " - " + xhr.responseText, function(){});
+        			            hideLoading();
+        			        }
+        				});
+        				return false;
+                	});
+                	
+                });
+                </script>
+					</div>
+				</div>
+			</div>
+		</section>
+	</th:block>
+</body>
+</html>

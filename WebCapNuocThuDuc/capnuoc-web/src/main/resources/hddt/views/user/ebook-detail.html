@@ -1,0 +1,250 @@
+    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/client/layout-main}">
+<body>
+	<th:block layout:fragment="content">
+   
+   
+   <div class="breadcrumbs">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <ul class="breadcrumb-nav">
+              <li>
+                <a href="/"><i class="lni lni-home"></i> Trang chủ</a>
+              </li>
+              <li>[[${Title_ebook}]]</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="item-details section">
+      <div class="container">
+        <div class="top-area">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-12">
+              <div class="product-images">
+                <main id="gallerys">
+                  <div class="main-img">
+                    <img th:src="@{'/e-images/' + ${ImageLogo_ebook}}" alt="" class="img-fluid" />
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12">
+              <div class="product-info">
+                <h2 class="title">[[${Title_ebook}]]</h2>
+                <p class="category">
+                  <i class="lni lni-tag"></i>
+                  <a href="javascript:void(0)">[[${LoaiSachText_ebook}]]</a>
+                </p>
+                <h3 class="price my-3">[[${Price_ebook}]]đ</h3>
+
+                <div class="row">
+                  <div class="col-12">
+                    <ul class="product-info__list">
+                      <li>
+                        <strong>Tác giả : </strong> [[${TacGia_ebook}]] 
+                        
+                      </li>
+                      <li><strong>Số trang : </strong>[[${SoTrang_ebook}]] </li>
+                      <li><strong>Năm xuất bản : </strong>[[${Year_ebook}]]</li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="info-text">[[${SummaryContent_ebook}]]</p>
+                
+                
+                
+               	<th:block th:if="${check_view_ebook == '1'}">
+                <div class="bottom-content">
+                  <div class="row align-items-end">
+                    <div class="col-lg-4 col-md-4 col-12">
+                      <div class="button cart-button">
+                        <a class="btn" th:href="@{'/sach/doc-truc-tuyen/' + ${_id_ebook}}"  target="_blank">
+                          <!-- <button class="btn" style="width: 100%"> -->
+                          <i class="lni lni-reload"></i>Đọc trực tuyến
+                          <!-- </button> -->
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </th:block>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-details-info">
+          <div class="single-block">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-body custom-responsive-margin">
+                  <h4>Mô tả</h4>
+                  <p th:utext="${Content_ebook}">
+                   
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+         
+<!--           <div class="product-details__cate">
+            <h4>Sách cùng danh mục</h4>
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/1.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html"
+                        >Từ làng sen đến bến nhà rồng
+                      </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/2.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html">Sắc nặng hồn thanh nhẹ </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/3.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html">Sắc nặng hồn thanh nhẹ </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/4.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html">Sắc nặng hồn thanh nhẹ </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/5.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html">Sắc nặng hồn thanh nhẹ </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/6.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html">Sắc nặng hồn thanh nhẹ </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/7.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html">Sắc nặng hồn thanh nhẹ </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-12">
+                <div class="single-product">
+                  <div class="product-image">
+                    <img src="assets/images/8.jpg" alt="product-detail.html" />
+                  </div>
+                  <div class="product-info">
+                    <span class="category">Văn học</span>
+                    <h4 class="title">
+                      <a href="product-detail.html">Sắc nặng hồn thanh nhẹ </a>
+                    </h4>
+
+                    <div class="price">
+                      <span>199.000đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+         -->
+        </div>
+      </div>
+    </section>
+   
+   </th:block>
+	
+</body>
+</html>

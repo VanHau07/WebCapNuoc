@@ -1,0 +1,129 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/admin/layout-forgot}">
+<body>
+	<th:block layout:fragment="content">
+		<div class="container-fluid style-main-content" id="divMainContent">
+				<div>
+					<div class="row page-titles">
+						<div class="col-md-12 col-12 align-self-center p-l-0">
+							<h3 class="text-themecolor m-b-0 m-t-0 text-uppercase">THÔNG TIN TÀI KHOẢN</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+						
+							<div class="card">
+								<div class="card-body">
+									<div class="row m-b-16">
+										<div class="col-12">
+											<span
+												class="text-middle fw-800 text-uppercase text-decoration-underline color-ses">Thông
+												tin</span>
+													<center><p th:if="${message!=null}">
+								<span class="text-middle fw-800 text-uppercase text-decoration-underline color-ses" th:text="${message}"></span>
+				</p></center>
+</div>
+</div>
+								
+									<form  id="f-tkhai-crud" name="f-tkhai-crud"  method="post">
+										<div class="form-group row">
+											<div class="col-md-6">
+											
+												<div class="row">
+													<div class="col-12 custom-field m-b-16">
+														<div class="c-f__wrapper">
+															<input class="form-control form-control-sm c-f__textbox"
+															id="n"	name="n" th:value="${UserName}" type="text" required="true"
+															readonly	autocomplete="off" />
+															<fieldset aria-hidden="true" class="c-f__set">
+																<legend class="c-f__legend">
+																	<label>Tên tài khoản</label>
+																</legend>
+															</fieldset>
+														</div>
+													</div>
+												</div>
+
+												<div class="row m-b-16">
+													<div class="col-12">
+														<div class="c-f__wrapper">
+															<input class="form-control form-control-sm c-f__textbox"
+															readonly  required="true" id="a"	name="a" type="text" autocomplete="off" 
+															th:value="${FullName}" />
+															<fieldset aria-hidden="true" class="c-f__set">
+																<legend class="c-f__legend">
+																	<label>Tên đầy đủ</label>
+																</legend>
+															</fieldset>
+														</div>
+													</div>
+												</div>	
+										</div>
+											<div class="col-md-6">
+												<div class="row">
+													<div class="col-12 custom-field m-b-16">
+														<div class="c-f__wrapper">
+															<input class="form-control form-control-sm c-f__textbox"
+															id="n"	name="n" th:value="${Phone}" type="text" required="true"
+															readonly	autocomplete="off" />
+															<fieldset aria-hidden="true" class="c-f__set">
+																<legend class="c-f__legend">
+																	<label>Số điện thoại</label>
+																</legend>
+															</fieldset>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-12 custom-field m-b-16">
+														<div class="c-f__wrapper">
+															<input class="form-control form-control-sm c-f__textbox"
+															id="n"	name="n" th:value="${Email}" type="text" required="true"
+															readonly	autocomplete="off" />
+															<fieldset aria-hidden="true" class="c-f__set">
+																<legend class="c-f__legend">
+																	<label>Địa chỉ email</label>
+																</legend>
+															</fieldset>
+														</div>
+													</div>
+												</div>
+												
+
+											</div>
+										</div>
+											
+								
+										
+										<div class="row">
+											<div
+												class="col-12 button-group d-flex justify-content-between">
+
+												<a th:href="@{/admin/main}"
+													class="btns btns-search_auto__ses hover-up__ses"
+													role="button" aria-pressed="true" style="padding-top: 7px;">Quay lại</a>
+												
+											</div>
+										</div>
+									</form>
+
+									<div class="row">
+										<div class="col-12">
+											<hr style="margin: 0 0 10px 0" />
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>	
+
+						</div>
+				</div>
+			</div>
+			
+	</th:block>
+</body>
+</html>

@@ -1,0 +1,107 @@
+     <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/client/layout-main}">
+<body>
+	<th:block layout:fragment="content">
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-md-6 col-12">
+            <ul class="breadcrumb-nav">
+              <li>
+                <a th:href="@{/}"><i class="lni lni-home"></i> Trang chủ</a>
+              </li>
+              <li><a href="#">Tin tức</a></li>
+              <li>[[${Title_blog}]]</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section blog-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-12">
+            <div class="single-inner">
+              <div class="post-details">
+                <div class="main-content-head">
+                  <div class="post-thumbnils">
+                   <img th:src="@{'/e-images/' + ${ImageLogo_blog}}"
+                      alt="#"
+                    /> 
+                  </div>
+                  <div class="meta-information">
+                    <h2 class="post-title">
+                      [[${Title_blog}]]
+                    </h2>
+
+                    <ul class="meta-info">
+                      <li>
+                        <a href="javascript:void(0)">
+                          <i class="lni lni-user"></i> [[${NguoiTao_blog}]]</a
+                        >
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)"
+                          ><i class="lni lni-calendar"></i> [[${NgayTao_blog}]] (GMT+7)
+                        </a>
+                      </li>
+                 <!--      <li>
+                        <a href="javascript:void(0)"
+                          ><i class="lni lni-tag"></i> Văn Học</a
+                        >
+                      </li> -->
+                   <!--    <li>
+                        <a href="javascript:void(0)"
+                          ><i class="lni lni-timer"></i> 5 min read</a
+                        >
+                      </li> -->
+                    </ul>
+                  </div>
+                  <div class="detail-inner">
+                          <div class="test__ col-md-12 col-sm-12 img-box__mobile" th:utext="${Content_blog}"></div>          
+               
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <aside class="col-lg-4 col-md-12 col-12">
+            <div class="sidebar blog-grid-page">
+              <div class="widget popular-feeds">
+                <h5 class="widget-title">Tin tức mới</h5>
+                <div class="popular-feed-loop" th:each="_blog_new: ${_blog_random}">
+                   <div class="single-popular-feed">
+                    <div class="feed-desc">
+                      <a class="feed-img" th:href="@{'/tin-tuc/' + ${_blog_new._id}}">
+                          <img th:src="@{'/e-images/' + ${_blog_new.ImageLogo}}"
+                          alt="#"
+                        />
+                      </a>
+                      <h6 class="post-title">
+                        <a th:href="@{'/tin-tuc/' + ${_blog_new._id}}"
+                          > [[${_blog_new.Title}]]</a
+                        >
+                      </h6>
+                      <span class="time"
+                        ><i class="lni lni-calendar"></i> [[${_blog_new.NgayTao}]]</span
+                      >
+                    </div>
+                  </div>
+       
+                </div>
+              </div>
+            </div>
+          </aside>
+      
+        </div>
+      </div>
+    </section>
+   
+
+  </th:block>	
+</body>
+</html>

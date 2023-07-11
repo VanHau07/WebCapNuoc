@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<body>
+		<th:block layout:fragment="content">
+
+<div class="row page-titles">
+	<div class="col-md-12 col-12 align-self-center p-l-0">
+		<h3 class="text-themecolor m-b-0 m-t-0 text-uppercase" th:text="${_header_}" ></h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+	<form name="f-config-email-server" id="f-config-email-server" method="post" enctype="multipart/form-data" >
+					<div class="card">
+						<div class="card-body">
+							<div class="row p-l p-r">
+								<div class="col-sm-12 offset-md-2 col-md-8 b-a m-b-sm background-frame-brown ">
+									<!-- box-header -->
+									<div class="input-group-sm row">
+										<label class="col-5 col-sm-3 form-control-label"  >Gửi mail tự động</label>
+										<div class="col-7 col-sm-9">
+											<div class="row">
+												<div class="col-sm-12 d-flex align-items-center">
+													<div class="offset-3 col-9 offset-sm-1 col-sm-11">
+														<label class="ui-switch m-r m-t-sm dark">
+															<input type="checkbox" class="has-value" id="check-auto-send" name="check-auto-send" th:checked="${CheckAutoSend != null && CheckAutoSend}" />
+															<i></i>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="input-group-sm row">
+										<label class="col-5 col-sm-3 form-control-label">Phương thức</label>
+										<div class="col-7 col-sm-9">
+											<div class="row">
+												<div class="col-sm-12 d-flex align-items-center">
+													<label class="col-3 col-sm-1 form-control-label p-l-0 p-r-0 " >SSL</label>
+													<div class="col-9 col-sm-11">
+														<label class="ui-switch m-r m-t-sm dark">
+															<input type="checkbox" class="has-value" id="check-ssl" name="check-ssl" th:checked="${CheckSSL != null && CheckSSL}" />
+															<i></i>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 d-flex align-items-center" >
+													<label class="col-3 col-sm-1 form-control-label p-l-0 p-r-0 ">TLS</label>
+													<div class="col-9 col-sm-11">
+														<label class="ui-switch m-r m-t-sm dark">
+															<input type="checkbox" class="has-value" id="check-tls" name="check-tls" th:checked="${CheckTLS != null && CheckTLS}" />
+															<i></i>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="input-group-sm m-b-14">
+										<label>SMTP Server </label>
+										<input type="text" class="form-control form-control-sm has-value" id="smtp-server" name="smtp-server" autocomplete="off" th:value="${SmtpServer}" />
+									</div>
+									<div class="input-group-sm m-b-14">
+										<label>Port </label>
+										<input type="text" class="form-control form-control-sm has-value" id="smtp-port" name="smtp-port" th:value="${SmtpPort}" />
+									</div>
+									<div class="input-group-sm m-b-14">
+										<label>Địa chỉ email</label>
+										<input type="text" class="form-control form-control-sm has-value" id="email-address" name="email-address" th:value="${EmailAddress}" autocomplete="off" />
+									</div>
+									<div class="input-group-sm m-b-24">
+										<label>Mật khẩu email</label>
+										<input type="password" class="form-control form-control-sm" id="email-password" name="email-password" autocomplete="new-password" />
+									</div>
+									<div class="input-group-sm p-b-sm p-r-xs">
+										<div class="text-md-left text-sm-left text-left" ></div>
+							
+										<div class="text-md-right text-sm-right text-right">
+										<div class="row">
+										<div class="col-md-6" style="text-align:left">
+											<a th:href="@{/admin/main/configEmail/init}"><button type="button" data-action="back" class="btn btn-primary" title="Quay lại">
+												<i class="mdi mdi-check-all"></i>
+												<span class="d-none d-md-inline">quay lại</span>
+											</button></a>
+										</div>
+										<div class="col-md-6">
+											<button type="button" data-action="accept" class="btnadd btns btns-blue__ses" th:if="${null == messageError && 'DETAIL' != _action_}" title="Chấp nhận">
+												<i class="mdi mdi-check-all"></i>
+												<span class="d-none d-md-inline">Chấp nhận</span>
+											</button>
+										</div>
+										</div>
+										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="_id" th:value="${_id}" >
+				</form>
+				<script type="text/javascript">
+		transactionMain = '[[${transaction}]]';
+		</script>
+		<th:block th:switch="${_isedit_}" >
+			<script type="text/javascript" th:case="true">
+			$(function(){
+				initTinyMCEForMail('content');
+			});
+			</script>
+			<script type="text/javascript" th:case="*">
+			$(function(){
+				disabledAllControlsInForm('fPostCRUD');
+				initTinyMCEOnlyView('content');
+				setTimeout(function(){
+					$('div[role="application"]').find('div[role="group"]').removeClass('tox-tbtn--disabled').removeAttr('aria-disabled');
+					$('div[role="application"]').find('div[role="group"]').find('button').removeClass('tox-tbtn--disabled').removeAttr('aria-disabled');
+				}, 500);
+			});
+			</script>
+		</th:block>
+<!-- 		<script th:src="@{/static/function/configmail/postCRUD.js(v=1.4) }"></script> -->
+			<script type="text/javascript">
+			$(function(){
+				setEventFileUpload();
+				
+				$("#f-config-email-server").find('button[data-action]').click(function (event) {
+					event.preventDefault();/*event.stopPropagation();*/
+					
+					var $obj = $(this);
+					var action = $obj.data('action');
+					
+					switch (action) {
+					case 'accept':
+						var formData = new FormData();
+						formData.append('_id', $('#f-config-email-server').find('input[name="_id"]').val());
+						formData.append('check-auto-send', $('#f-config-email-server').find('input[type="checkbox"][name="check-auto-send"]').prop('checked')? 'Y': 'N');
+						formData.append('check-ssl', $('#f-config-email-server').find('input[type="checkbox"][name="check-ssl"]').prop('checked')? 'Y': 'N');
+						formData.append('check-tls', $('#f-config-email-server').find('input[type="checkbox"][name="check-tls"]').prop('checked')? 'Y': 'N');
+						formData.append('smtp-server', $('#f-config-email-server').find('#smtp-server').val());
+						formData.append('smtp-port', $('#f-config-email-server').find('#smtp-port').val());
+						formData.append('email-address', $('#f-config-email-server').find('#email-address').val());
+						formData.append('email-password', $('#f-config-email-server').find('#email-password').val());
+						var xhrSign = new XMLHttpRequest();
+						xhrSign.upload.addEventListener('progress', function(e) {
+							
+						});
+						if(xhrSign.upload) {
+							
+						};
+						xhrSign.onreadystatechange = function(e) {
+							if(4 == this.readyState && this.status == 200) {
+								var res = xhrSign.response;
+				            	if(res){
+				            		if(res.errorCode == 0) {
+				            			hideLoading();
+
+				            			var responseData = xhrSign.response.responseData;
+				            			var confirmText = responseData['CONFIRM'];
+				    					tokenTransaction = responseData['TOKEN'];
+				    					
+				    					formData.append('tokenTransaction', tokenTransaction);
+				    					
+				    					alertConfirm(confirmText,
+			    							function(e){
+					    						var xhr = new XMLHttpRequest();
+						    					xhr.upload.addEventListener('progress', function(e) {
+						    						
+						    					});
+						    					if(xhr.upload) {
+						    						
+						    					};
+						    					xhr.onreadystatechange = function(e) {
+						    						if(4 == this.readyState && this.status == 200) {
+						    							var res = xhr.response;
+						    			            	if(res){
+						    			            		if(res.errorCode == 0) {
+						    			            			disabledAllControlsInForm('f-config-email-server');
+						    			            			$obj.prop('disabled', true);
+						    			            			alertDLSuccess(jQuery.type(res.responseData) == 'object'? res.responseData.info: createObjectError(res).html(), function(){
+						    			            			});
+						    			            				$('#f-config-email-server').find('button[data-action="back"]').trigger('click');
+						    			            		}else{
+										            			$obj.prop('disabled', false);
+										            			alertDLSuccess(createObjectError(res).html(), function(){});
+										            			hideLoading();
+										            		}
+						    			            	}else{
+										            		$obj.prop('disabled', false);
+										            		alertDLSuccess('unknown error!!!', function(){});
+															hideLoading();
+										            	}
+						    						}
+						    					}
+						    					xhr.onerror = function() {
+						    						
+						    					}
+						    					xhr.ontimeout = function() {
+						    						
+						    					}
+						    					
+						    					var urlPost = ROOT_PATH + '/admin/main/' + transactionMain + '/saveData';
+						    					xhr.open("POST", urlPost, true);
+						    					xhr.responseType = 'json';
+						    					xhr.setRequestHeader('X-CSRF-TOKEN', _csrf_value)
+						    					xhr.setRequestHeader(HEADER_RESULT_TYPE_NAME, HEADER_RESULT_TYPE_JSON);
+						    					
+						    					xhr.setRequestHeader("Cache-Control", "no-cache");
+						    					xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+						    					xhr.send(formData);
+				    						}
+				    						, function(e){}
+				    					);
+				    					
+//				            			alert(tokenTransaction);
+//				            			alertDLSuccess('Ký hợp đồng thành công.', function(){
+//				            				objData = {};
+//				            				objData['_id'] = $('#fEOfficeEContractSign').find('input[name="_id"]').val();
+//				            				submitFormRenderArea(ROOT_PATH + '/Main?transaction=EOfficeEContractSign&method=main', objData, $('#divSubContent'));
+//				            			});
+				            			
+				            		}else{
+				            			$obj.prop('disabled', false);
+				            			alertDLSuccess(createObjectError(res).html(), function(){});
+				            			hideLoading();
+				            		}
+				            	}else{
+				            		$obj.prop('disabled', false);
+				            		alertDLSuccess('unknown error!!!', function(){});
+									hideLoading();
+				            	}
+							}
+						}
+						xhrSign.onerror = function() {
+							
+						}
+						xhrSign.ontimeout = function() {
+							
+						}
+						
+						var urlPost = ROOT_PATH + '/admin/main/' + transactionMain + '/checkDataToSave';
+						xhrSign.open("POST", urlPost, true);
+						xhrSign.responseType = 'json';
+						xhrSign.setRequestHeader('X-CSRF-TOKEN', _csrf_value)
+						xhrSign.setRequestHeader(HEADER_RESULT_TYPE_NAME, HEADER_RESULT_TYPE_JSON);
+						
+						xhrSign.setRequestHeader("Cache-Control", "no-cache");
+						xhrSign.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+						xhrSign.send(formData);
+						
+						break;
+					case 'back':
+								$('#divMainContent').show();
+								$('#divSubContent').hide(function(){$(this).empty();});
+								if($('#fConfigMail').find('#grid').length > 0){
+									try{
+										$('#fConfigMail').find('#grid').data("kendoGrid").dataSource.read();
+									}catch(err){}
+								}						
+								break;
+
+					default:
+						break;
+					}
+					
+				});
+				
+			});
+
+			function setEventFileUpload(){	
+				$("#f-config-email-server").find('input[type="file"][name="attachFile"]').fileupload({
+					dataType: 'json',
+					url: ROOT_PATH + '/admin/common/processUploadFileTmp',
+					sequentialUploads: true,
+					singleFileUploads: true,
+					beforeSend: function(xhr, data) {
+						initAjaxJsonRequest(xhr);
+						showLoading();
+					},
+					add: function (e, data) {
+						data.submit();
+						
+						objTmp = this;
+						$(objTmp).closest("div.row").find('input[type="text"]').val('');
+					},
+					progressall: function (e, data) {
+					},
+					done: function (e, data) {
+					},
+					success:function(res) {
+						hideLoading();
+						if(res) {
+							if(res.errorCode == 0) {
+//								if($.isArray(res.responseData) && res.responseData.length > 0){
+//									var item = res.responseData[0];
+									var item = res.responseData;
+									$(objTmp).closest("div.row").find('input[type="text"][name="attachFileName"]').val(item['OriginalFilename']);
+									$(objTmp).closest("div.row").find('input[type="text"][name="attachFileNameSystem"]').val(item['SystemFilename']);
+//								}
+							}else{
+								alertDLSuccess(createObjectError(res).html(), function(){});
+							}				
+						}else{
+							alertDLSuccess('unknown error!!!', function(){});
+							hideLoading();
+						}
+					},
+					processfail: function (e, data) {
+						hideLoading();
+				    },
+					error: function (e, data) {
+						hideLoading();
+						alertDLSuccess('Lỗi trong quá trình tải tập tin...', function(){});
+					}
+				});
+			}
+				</script>
+	</div>
+</div>
+</html>
